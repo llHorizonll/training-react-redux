@@ -1,0 +1,39 @@
+.form {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin: -160px 0 0 -160px;
+  width: 320px;
+  height: 420px;
+  padding: 36px;
+  box-shadow: 0 0 100px rgba(0, 0, 0, .08);
+}
+
+.form p {
+  color: rgb(204, 204, 204);
+}
+
+.logo {
+  text-align: center;
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+  line-height: 80px;
+  cursor: pointer;
+  margin-bottom: 24px;
+}
+
+.logo span {
+  vertical-align: text-bottom;
+  font-size: 16px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.ant-spin-container,
+.ant-spin-nested-loading {
+  height: 100%;
+}
+
+.login-form-button {
+  width: 100%;
+}

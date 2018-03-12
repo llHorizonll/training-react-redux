@@ -1,0 +1,19 @@
+// const wcfURL = `http://${window.location.hostname}/genex.wcf`;
+// const localhost = `http://localhost/genex.wcf`;
+let wcfURL;
+(process.env.NODE_ENV === 'production')
+  ? wcfURL = `http://${window.location.hostname}/genex.wcf`
+  : wcfURL = `http://localhost/genex.wcf`;
+module.exports = {
+  name: '',
+  prefix: '',
+  footerText: '',
+  logo: '../logo.svg',
+  CORS: [],
+  openPages: ['/login'],
+  api: {
+    userAuthen: `${wcfURL}/SYS/Authen.svc/Json/Login`,
+    sideMenus: `${wcfURL}/MENU/Menu.svc/Json/G/MENULIST`,
+    // userLogout: `${APIV1}/user/logout`,
+  },
+}
