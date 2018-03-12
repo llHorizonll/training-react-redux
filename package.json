@@ -1,10 +1,11 @@
 {
   "name": "react-redux",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "http://llHorizonll.github.io/training-react-redux",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
+    "deploy": "gh-pages -d build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   },
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "babel-plugin-import": "^1.6.5",
+    "gh-pages": "^1.1.0",
     "react-app-rewired": "^1.5.0",
     "redux-devtools": "^3.4.1",
     "redux-devtools-dock-monitor": "^1.1.3",
