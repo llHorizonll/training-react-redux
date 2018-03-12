@@ -2,7 +2,7 @@
 // const localhost = `http://localhost/genex.wcf`;
 let wcfURL;
 (process.env.NODE_ENV === 'production')
-  ? wcfURL = `http://${window.location.hostname}/genex.wcf`
+  ? wcfURL = `http://192.168.10.5/genex.wcf`
   : wcfURL = `http://localhost/genex.wcf`;
 module.exports = {
   name: '',

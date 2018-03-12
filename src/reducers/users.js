@@ -1,7 +1,7 @@
 import { userConstants } from '../constants/ActionTypes'
 let presetuser;
 (process.env.NODE_ENV === 'production')
-  ? presetuser = { username: 'systemadmin@demo', password: '1234', remember: true }
+  ? presetuser = { username: 'test@user.com', password: '1234', remember: true }
   : presetuser = { username: 'blueledger@gmail.com', password: '1234', remember: true };
 export function users(state = presetuser, action) {
   switch (action.type) {
