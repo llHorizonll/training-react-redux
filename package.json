@@ -1,11 +1,11 @@
 {
   "name": "react-redux",
   "version": "0.1.0",
-  "homepage": "http://llHorizonll.github.io/docs/",
+  "homepage": "http://llHorizonll.github.io/training-react-redux/docs/",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d docs",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   },
