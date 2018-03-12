@@ -1,7 +1,7 @@
 {
   "name": "react-redux",
   "version": "0.1.0",
-  "homepage": "http://llHorizonll.github.io/training-react-redux/docs/",
+  "homepage": "http://llHorizonll.github.io/training-react-redux",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
