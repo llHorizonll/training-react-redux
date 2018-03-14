@@ -6,14 +6,14 @@ let wcfURL;
   : wcfURL = `http://localhost/genex.wcf`;
 module.exports = {
   name: '',
-  prefix: '',
+  prefix: 'blueledger',
   footerText: '',
   logo: '../logo.svg',
   CORS: [],
   openPages: ['/login'],
   api: {
     userAuthen: `${wcfURL}/SYS/Authen.svc/Json/Login`,
-    sideMenus: `${wcfURL}/MENU/Menu.svc/Json/G/MENULIST`,
+    menuList: `${wcfURL}/MENU/Menu.svc/Json/G/MENULIST`,
     // userLogout: `${APIV1}/user/logout`,
   },
 }

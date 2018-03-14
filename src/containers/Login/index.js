@@ -2,9 +2,9 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Form, Input, Button, Icon, Checkbox } from 'antd'
-import './login.css'
-import logo from '../logo.svg'
-import { userActions } from '../actions';
+import './Login.css'
+import logo from '../../logo.svg'
+import { userActions } from '../../actions';
 
 const FormItem = Form.Item
 const Login = ({

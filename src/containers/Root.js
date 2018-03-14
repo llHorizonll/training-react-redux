@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV === 'production') {
-  module.exports = require('./Router.prod')
+  module.exports = require('./Root.prod')
 } else {
-  module.exports = require('./Router.dev')
+  module.exports = require('./Root.dev')
 }
