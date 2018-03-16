@@ -1,3 +1,5 @@
 import NavBar from './NavBar'
 import SideNav from './SideNav';
-export { NavBar, SideNav }
+import CardList from './CardList';
+import Header from './Header';
+export { NavBar, SideNav, CardList, Header }

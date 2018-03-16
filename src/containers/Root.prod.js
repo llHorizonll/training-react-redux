@@ -5,17 +5,19 @@ import { Switch, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { PrivateRoute } from '../components/PrivateRoute'
 import { message } from 'antd'
-import Home from './Home/'
+import App from './app'
 import Login from './Login/'
 import Register from './Register/'
 import NotFound from './NotFound/'
+import LoadingBar from 'react-redux-loading-bar'
 
 const Root = ({ store, location }) => {
   return (
     <Provider store={store}>
       <div>
+        <LoadingBar />
         <Switch>
-          <PrivateRoute exact={location.pathname === '/login' ? true : false} path='/' component={Home} />
+          <PrivateRoute exact={location.pathname === '/login' ? true : false} path='/' component={App} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="*" component={NotFound} />

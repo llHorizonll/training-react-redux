@@ -28,7 +28,6 @@ const Login = ({
       <div className="logo">
         <img alt={'logo'} src={logo} style={{ width: '60%' }} />
       </div>
-
       <form>
         <FormItem hasFeedback>
           {getFieldDecorator('username', {

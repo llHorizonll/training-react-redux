@@ -51,6 +51,11 @@ export function app(state = initialState, action) {
         ...state,
         navOpenKeys: JSON.parse(localStorage.getItem(`${prefix}navOpenKeys`)),
       };
+    case menuConstants.CHANGEPATH:
+      return {
+        ...state,
+        locationPathname: action.pathname
+      };
     default:
       return state
   }

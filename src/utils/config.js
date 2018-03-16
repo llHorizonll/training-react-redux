@@ -3,17 +3,19 @@
 let wcfURL;
 (process.env.NODE_ENV === 'production')
   ? wcfURL = `http://192.168.10.5/genex.wcf`
-  : wcfURL = `http://localhost/genex.wcf`;
+  : wcfURL = `http://localhost/genex.wcf`
+
 module.exports = {
   name: '',
   prefix: 'blueledger',
   footerText: '',
-  logo: '../logo.svg',
+  logo: '../../logo.svg',
   CORS: [],
   openPages: ['/login'],
   api: {
     userAuthen: `${wcfURL}/SYS/Authen.svc/Json/Login`,
     menuList: `${wcfURL}/MENU/Menu.svc/Json/G/MENULIST`,
+    prefixlist: `${wcfURL}/DATA/Vouchers.svc/Json/G/VOUCHERTYPE`,
     // userLogout: `${APIV1}/user/logout`,
   },
 }

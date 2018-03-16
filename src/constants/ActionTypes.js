@@ -12,6 +12,7 @@ export const userConstants = {
 
 export const menuConstants = {
   CHANGEOPENKEYS: 'CHANGEOPENKEYS',
+  CHANGEPATH: 'CHANGEPATH',
   TOGGLEMENULEFT: 'TOGGLEMENU',
   TOGGLEMENURIGHT: 'TOGGLEMENURIGHT',
   GETMENURIGHT: 'GETMENURIGHT',
@@ -25,6 +26,15 @@ export const alertConstants = {
   ERROR: 'ALERT_ERROR',
   CLEAR: 'ALERT_CLEAR'
 };
+
+export const ledgerConstants = {
+  GET_PREFIX_REQUEST: 'GET_PREFIX_REQUEST',
+  GET_PREFIX_SUCCESS: 'GET_PREFIX_SUCCESS',
+  GET_PREFIX_FAILURE: 'GET_PREFIX_FAILURE',
+  GET_PAGE: 'GET_PAGE'
+};
+
+
 
 
 

@@ -1,17 +1,17 @@
 import { userConstants } from '../constants/ActionTypes'
-import { userService } from '../services';
+import { userService } from '../services'
 import { push } from 'react-router-redux'
-import { alertActions } from './message';
+import { alertActions } from './message'
 
 const login = (values) => {
   return dispatch => {
-    dispatch(request(values));
+    dispatch(request(values))
     userService.login(values).then(user => {
       dispatch(success(user))
       dispatch(push('/'))
     }, error => {
-      dispatch(failure(error));
-      dispatch(alertActions.error(error));
+      dispatch(failure(error))
+      dispatch(alertActions.error(error))
       dispatch(alertActions.clear());
     });
   };
@@ -22,7 +22,7 @@ const login = (values) => {
 
 const logout = () => {
   return dispatch => {
-    userService.logout();
+    userService.logout()
     dispatch({ type: userConstants.LOGOUT })
     dispatch(push('/login'))
   }

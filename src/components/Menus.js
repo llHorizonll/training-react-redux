@@ -7,7 +7,7 @@ const SubMenu = Menu.SubMenu;
  * @param {*} menu 
  * TODO: theme
  */
-const Menus = (app) => {
+const Menus = ({ menu, navOpenKeys, changeOpenKeys, side, siderFold, darkTheme, changeLocation, location }) => {
   //recursive menu
   // const recursiveMenu = (menuTree) => {
   //   return submenu.sort((a, b) => a.Seq > b.Seq).map((item) => {
@@ -36,7 +36,7 @@ const Menus = (app) => {
     return submenu.sort((a, b) => a.Seq > b.Seq).map((item) => {
       return (
         <Menu.Item key={item.Seq}>
-          <Link to={item.Name || '#'}>
+          <Link to={`/${item.Name}` || '#'} onClick={() => changeLocation(location)}>
             <Icon type="user" />
             <span>{item.Name}</span>
           </Link>
@@ -60,11 +60,10 @@ const Menus = (app) => {
     }
   }
 
-  const menuItems = getMenus(app.menu)
-
+  const menuItems = getMenus(menu)
   const onOpenChange = (openKeys) => {
-    const latestOpenKey = openKeys.find(key => !app.navOpenKeys.includes(key))
-    const latestCloseKey = app.navOpenKeys.find(key => !openKeys.includes(key))
+    const latestOpenKey = openKeys.find(key => !navOpenKeys.includes(key))
+    const latestCloseKey = navOpenKeys.find(key => !openKeys.includes(key))
     let nextOpenKeys = []
     if (latestOpenKey) {
       nextOpenKeys.push(latestOpenKey)
@@ -74,17 +73,17 @@ const Menus = (app) => {
     }
 
     if (openKeys.length === 0) {
-      app.changeOpenKeys(openKeys)
+      changeOpenKeys(openKeys)
     } else {
-      app.changeOpenKeys(nextOpenKeys)
+      changeOpenKeys(nextOpenKeys)
     }
   }
 
   let menuProps;
-  if (app.side === 'left') {
-    menuProps = !app.siderFold ? {
+  if (side === 'left') {
+    menuProps = !siderFold ? {
       onOpenChange,
-      openKeys: app.navOpenKeys,
+      openKeys: navOpenKeys,
     } : {}
   } else {
     menuProps = {}
@@ -93,10 +92,10 @@ const Menus = (app) => {
   return (
     <Menu
       {...menuProps}
-      theme={app.darkTheme ? 'light' : 'dark'}
-      //defaultSelectedKeys={['1']}
-      //selectedKeys={defaultSelectedKeys}
-      mode={app.siderFold ? 'vertical' : 'inline'}
+      theme={darkTheme ? 'dark' : 'light'}
+      defaultSelectedKeys={navOpenKeys}
+      //selectedKeys={['510']}
+      mode={siderFold ? 'vertical' : 'inline'}
     >
       {menuItems}
     </Menu>

@@ -2,18 +2,17 @@ import React from 'react';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Layout } from 'antd';
-import { NavBar, SideNav } from '../../components'
-import './Home.css';
-import logo from '../../logo.svg'
-import { userActions, menuActions } from '../../actions';
+import { NavBar, SideNav, Header } from '../components'
+import { userActions, menuActions } from '../actions';
+import LoadingBar from 'react-redux-loading-bar'
+import { Helmet } from 'react-helmet'
+import '../index.css';
+import logo from '../logo.svg';
+import icon from '../favicon.ico';
 
 const { Content } = Layout;
-/**
- * 
- * @param {Ledger} param0 
- * TODO: Ledger Module
- */
-const App = ({ app, children, dispatch }) => {
+
+const App = ({ app, children, dispatch, location }) => {
   const { user, leftsiderFold, rightsiderFold, darkTheme, isNavbar, menuPopoverVisible, navOpenKeys, menu, menuright } = app
   const headerProps = {
     menu,
@@ -44,8 +43,9 @@ const App = ({ app, children, dispatch }) => {
     menu: menu,
     siderFold: leftsiderFold,
     side: 'left',
-    darkTheme,
+    darkTheme: true,
     navOpenKeys,
+    location,
     getMenuList() {
       dispatch(menuActions.getmenulist())
     },
@@ -55,6 +55,10 @@ const App = ({ app, children, dispatch }) => {
     changeOpenKeys(openKeys) {
       dispatch(menuActions.handleNavOpenKeys(openKeys))
     },
+    changeLocation(pathname) {
+      console.log('in changexx', pathname)
+      dispatch(menuActions.handleLocation(pathname))
+    }
   }
 
   const rightsiderProps = {
@@ -63,49 +67,51 @@ const App = ({ app, children, dispatch }) => {
     side: 'right',
     darkTheme,
     //navOpenKeys,
+    location,
     getMenuList() { },
     changeTheme() {
       dispatch({ type: 'app/switchTheme' })
     },
+    changeLocation(pathname) {
+      //console.log('in change')
+      //dispatch(menuActions.handleLocation(pathname))
+    }
     // changeOpenKeys(openKeys) {
     //   dispatch(menuActions.handleNavOpenKeys(openKeys))
     // },
   }
-
   return (
     <Layout>
+      <Helmet>
+        <title>Blueledgers</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href={icon} type="image/x-icon" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" />
+      </Helmet>
       <SideNav {...leftsiderProps} />
       <Layout>
         <NavBar {...headerProps} />
         <Content style={{ background: '#ddd' }}>
-          <div className="App">
-            <Layout style={{ right: 0, position: 'fixed', height: '100%' }}>
-              <SideNav {...rightsiderProps} />
-            </Layout>
-            <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <h1 className="App-title">Welcome to React</h1>
-            </header>
-            <p className="App-intro">
-              To get started, edit <code>src/App.js</code> and save to reload.<br />
-            </p>
+          <LoadingBar />
+          <Layout style={{ right: 0, position: 'fixed', height: '100%', zIndex: 1, textAlign: 'center' }}>
+            <SideNav {...rightsiderProps} />
+          </Layout>
+          <div className="App" onClick={(!rightsiderFold) ? headerProps.toggleright : null}>
+            <Header logo={logo} location={location.replace(/^.*[/]/, '')} />
             {children}
           </div>
         </Content>
       </Layout>
-      {/* <SideNav {...rightsiderProps} /> */}
     </Layout>
   )
 }
 
-const mapStateToProps = (state) => {
-  return state;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    ...state,
+    location: ownProps.location.pathname
+  };
 };
-
-// const mapDispatchToProps = (dispatch, ownstate) => {
-//   dispatch(menuActions.getmenulist())
-//   return ownstate;
-// }
 
 export default withRouter(connect(mapStateToProps)(App))
 

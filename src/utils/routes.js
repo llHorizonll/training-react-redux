@@ -1,5 +1,7 @@
 import React from 'react';
+import * as Page from '../containers/'
 
+const { Ledger, ListLedger, DetailLedger } = Page;
 const routes = [
   {
     path: '/',
@@ -9,8 +11,21 @@ const routes = [
   },
   {
     path: '/Voucher Entry',
+    exact: true,
     breadcrumbName: 'Voucher Entry',
-    main: () => <h2>Voucher Entry</h2>
+    main: () => <Ledger />,
+  },
+  {
+    path: '/Voucher Entry/:prefix',
+    exact: true,
+    breadcrumbName: ':prefix',
+    main: () => <ListLedger />,
+  },
+  {
+    path: '/Voucher Entry/:prefix/:id',
+    exact: true,
+    breadcrumbName: ':id',
+    main: () => <DetailLedger />,
   },
   {
     path: '/Standard Voucher',

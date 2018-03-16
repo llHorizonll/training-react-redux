@@ -10,8 +10,8 @@ const getmenulist = () => {
   return dispatch => {
     dispatch(request());
     menuService.query().then(item => {
-      dispatch(success(item.filter((x) => x.Code !== 'SET')))
-      dispatch(getmenuright(item.filter((x) => x.Code === 'SET')))
+      dispatch(success(item.filter((x) => x.Code !== 'SET' && x.Code !== 'OR')))
+      dispatch(getmenuright(item.filter((x) => x.Code === 'SET' || x.Code === 'OR')))
     }, error => {
       dispatch(failure(error));
       localStorage.removeItem('user');
@@ -47,9 +47,16 @@ const handleNavOpenKeys = (openKeys) => {
   }
 }
 
+const handleLocation = (pathname = '') => {
+  return dispatch => {
+    dispatch({ type: menuConstants.CHANGEPATH, pathname })
+  }
+}
+
 export const menuActions = {
   getmenulist,
   toggleleft,
   toggleright,
+  handleLocation,
   handleNavOpenKeys
 };
